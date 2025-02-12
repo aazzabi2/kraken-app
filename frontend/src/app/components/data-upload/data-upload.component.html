@@ -1,0 +1,4 @@
+<input type="file" (change)="onFileChange($event)" accept=".xlsx, .xls" />
+<button (click)="upload()" [disabled]="data.length === 0">
+  Envoyer les données
+</button>
