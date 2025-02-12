@@ -1,0 +1,22 @@
+version: "3.9"
+services:
+  mongo:
+    container_name: kraken-mongo
+    image: mongo:latest 
+    ports:
+      - "${MONGODB_PORT}:${MONGODB_PORT}"
+    volumes:
+      - mongo_data:/data/db
+
+  compass:
+    container_name: kraken-mongo-compass
+    image: mongodb/compass:latest
+    ports:
+      - "${MONGO_COMPASS_PORT}:${MONGO_COMPASS_PORT}"
+    depends_on:
+      - mongo
+    environment:
+      MONGODB_URI: ${MONGODB_URL}
+
+volumes:
+  mongo_data:
